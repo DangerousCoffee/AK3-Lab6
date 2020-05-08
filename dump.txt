@@ -1,0 +1,223 @@
+
+hello1.o.unstripped:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <print_hello>:
+static LIST_HEAD(my_list_head);
+
+module_param(count, uint, 0444);
+MODULE_PARM_DESC(count, "Defines how many times a string will be printed");
+static int print_hello(uint count)
+{
+   0:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+})
+
+static __always_inline
+void __read_once_size(const volatile void *p, void *res, int size)
+{
+	__READ_ONCE_SIZE;
+   4:	e3004000 	movw	r4, #0
+   8:	e3404000 	movt	r4, #0
+   c:	e24dd00c 	sub	sp, sp, #12
+  10:	e5943000 	ldr	r3, [r4]
+	ktime_t start, end;
+	struct my_list *data;
+	uint i;
+
+	BUG_ON(!list_empty(&my_list_head));
+  14:	e1540003 	cmp	r4, r3
+  18:	1a000004 	bne	30 <print_hello+0x30>
+	for (i = 0; i < count; i++) {
+  1c:	e3500000 	cmp	r0, #0
+  20:	1a000003 	bne	34 <print_hello+0x34>
+			};
+
+		list_add_tail(&data->list_node, &my_list_head);
+	}
+	return 0;
+}
+  24:	e3a00000 	mov	r0, #0
+  28:	e28dd00c 	add	sp, sp, #12
+  2c:	e8bd8ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+	BUG_ON(!list_empty(&my_list_head));
+  30:	e7f001f2 	.word	0xe7f001f2
+  34:	e300b000 	movw	fp, #0
+		pr_info("Hello, world!\n");
+  38:	e300a000 	movw	sl, #0
+			unsigned int index = kmalloc_index(size);
+
+			if (!index)
+				return ZERO_SIZE_PTR;
+
+			return kmem_cache_alloc_trace(kmalloc_caches[index],
+  3c:	e3a060c0 	mov	r6, #192	; 0xc0
+  40:	e340b000 	movt	fp, #0
+  44:	e340a000 	movt	sl, #0
+  48:	e3406060 	movt	r6, #96	; 0x60
+  4c:	e1a07000 	mov	r7, r0
+	for (i = 0; i < count; i++) {
+  50:	e3a05000 	mov	r5, #0
+		start = ktime_get();
+  54:	ebfffffe 	bl	0 <ktime_get>
+  58:	e1a08000 	mov	r8, r0
+		pr_info("Hello, world!\n");
+  5c:	e1a0000a 	mov	r0, sl
+		start = ktime_get();
+  60:	e1a09001 	mov	r9, r1
+		pr_info("Hello, world!\n");
+  64:	ebfffffe 	bl	0 <printk>
+		end = ktime_get();
+  68:	ebfffffe 	bl	0 <ktime_get>
+  6c:	e3a02018 	mov	r2, #24
+  70:	e1cd00f0 	strd	r0, [sp]
+  74:	e1a01006 	mov	r1, r6
+  78:	e59b0018 	ldr	r0, [fp, #24]
+  7c:	ebfffffe 	bl	0 <kmem_cache_alloc_trace>
+			data = NULL;
+  80:	e3550005 	cmp	r5, #5
+		*data = (struct my_list) {
+  84:	e3a03000 	mov	r3, #0
+	for (i = 0; i < count; i++) {
+  88:	e2855001 	add	r5, r5, #1
+			data = NULL;
+  8c:	01a00003 	moveq	r0, r3
+	for (i = 0; i < count; i++) {
+  90:	e1570005 	cmp	r7, r5
+		*data = (struct my_list) {
+  94:	e5803000 	str	r3, [r0]
+  98:	e5803004 	str	r3, [r0, #4]
+  9c:	e1c080f8 	strd	r8, [r0, #8]
+ * Insert a new entry before the specified head.
+ * This is useful for implementing queues.
+ */
+static inline void list_add_tail(struct list_head *new, struct list_head *head)
+{
+	__list_add(new, head->prev, head);
+  a0:	e5943004 	ldr	r3, [r4, #4]
+  a4:	e1cd80d0 	ldrd	r8, [sp]
+	next->prev = new;
+  a8:	e5840004 	str	r0, [r4, #4]
+	new->prev = prev;
+  ac:	e5803004 	str	r3, [r0, #4]
+  b0:	e1c081f0 	strd	r8, [r0, #16]
+	new->next = next;
+  b4:	e5804000 	str	r4, [r0]
+static __always_inline void __write_once_size(volatile void *p, void *res, int size)
+{
+	switch (size) {
+	case 1: *(volatile __u8 *)p = *(__u8 *)res; break;
+	case 2: *(volatile __u16 *)p = *(__u16 *)res; break;
+	case 4: *(volatile __u32 *)p = *(__u32 *)res; break;
+  b8:	e5830000 	str	r0, [r3]
+	for (i = 0; i < count; i++) {
+  bc:	0affffd8 	beq	24 <print_hello+0x24>
+  c0:	eaffffe3 	b	54 <print_hello+0x54>
+
+Disassembly of section .init.text:
+
+00000000 <init_module>:
+
+EXPORT_SYMBOL(print_hello);
+
+static int __init my_init(void)
+{
+   0:	e92d4010 	push	{r4, lr}
+	pr_info("Loading module...\n");
+   4:	e3000000 	movw	r0, #0
+   8:	e3400000 	movt	r0, #0
+   c:	ebfffffe 	bl	0 <printk>
+
+	WARN_ON(count == 0 || (count >= 5 && count <= 10));
+  10:	e3003000 	movw	r3, #0
+  14:	e3403000 	movt	r3, #0
+  18:	e5932008 	ldr	r2, [r3, #8]
+  1c:	e1a04003 	mov	r4, r3
+  20:	e2423005 	sub	r3, r2, #5
+  24:	e3520000 	cmp	r2, #0
+  28:	13530005 	cmpne	r3, #5
+  2c:	8a000003 	bhi	40 <init_module+0x40>
+  30:	e3000000 	movw	r0, #0
+  34:	e3a01051 	mov	r1, #81	; 0x51
+  38:	e3400000 	movt	r0, #0
+  3c:	ebfffffe 	bl	0 <warn_slowpath_null>
+	BUG_ON(count > 10);
+  40:	e5940008 	ldr	r0, [r4, #8]
+  44:	e350000a 	cmp	r0, #10
+  48:	9a000000 	bls	50 <init_module+0x50>
+  4c:	e7f001f2 	.word	0xe7f001f2
+
+	return print_hello(count);
+}
+  50:	e8bd4010 	pop	{r4, lr}
+	return print_hello(count);
+  54:	eafffffe 	b	0 <init_module>
+
+Disassembly of section .exit.text:
+
+00000000 <cleanup_module>:
+
+static void __exit my_exit(void)
+{
+	struct my_list *data, *tmp;
+
+	list_for_each_entry_safe(data, tmp, &my_list_head, list_node) {
+   0:	e3003000 	movw	r3, #0
+   4:	e3403000 	movt	r3, #0
+{
+   8:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+		pr_info("%lld\n", data->end - data->start);
+   c:	e3007000 	movw	r7, #0
+	list_for_each_entry_safe(data, tmp, &my_list_head, list_node) {
+  10:	e5934000 	ldr	r4, [r3]
+		pr_info("%lld\n", data->end - data->start);
+  14:	e3407000 	movt	r7, #0
+}
+
+static inline void list_del(struct list_head *entry)
+{
+	__list_del_entry(entry);
+	entry->next = LIST_POISON1;
+  18:	e3a08c01 	mov	r8, #256	; 0x100
+  1c:	e1a05003 	mov	r5, r3
+	entry->prev = LIST_POISON2;
+  20:	e3a09c02 	mov	r9, #512	; 0x200
+	list_for_each_entry_safe(data, tmp, &my_list_head, list_node) {
+  24:	e5946000 	ldr	r6, [r4]
+  28:	e1540005 	cmp	r4, r5
+  2c:	0a000010 	beq	74 <cleanup_module+0x74>
+		pr_info("%lld\n", data->end - data->start);
+  30:	e5941010 	ldr	r1, [r4, #16]
+  34:	e1a00007 	mov	r0, r7
+  38:	e5942008 	ldr	r2, [r4, #8]
+  3c:	e594c014 	ldr	ip, [r4, #20]
+  40:	e594300c 	ldr	r3, [r4, #12]
+  44:	e0512002 	subs	r2, r1, r2
+  48:	e0cc3003 	sbc	r3, ip, r3
+  4c:	ebfffffe 	bl	0 <printk>
+	__list_del(entry->prev, entry->next);
+  50:	e1c420d0 	ldrd	r2, [r4]
+		list_del(&data->list_node);
+		kfree(data);
+  54:	e1a00004 	mov	r0, r4
+	next->prev = prev;
+  58:	e5823004 	str	r3, [r2, #4]
+  5c:	e5832000 	str	r2, [r3]
+	entry->prev = LIST_POISON2;
+  60:	e1c480f0 	strd	r8, [r4]
+	list_for_each_entry_safe(data, tmp, &my_list_head, list_node) {
+  64:	e1a04006 	mov	r4, r6
+		kfree(data);
+  68:	ebfffffe 	bl	0 <kfree>
+	list_for_each_entry_safe(data, tmp, &my_list_head, list_node) {
+  6c:	e5966000 	ldr	r6, [r6]
+  70:	eaffffec 	b	28 <cleanup_module+0x28>
+	}
+	pr_info("Unloading module...\n");
+  74:	e3000000 	movw	r0, #0
+  78:	e3400000 	movt	r0, #0
+}
+  7c:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+	pr_info("Unloading module...\n");
+  80:	eafffffe 	b	0 <printk>
